@@ -41,7 +41,7 @@ jobs:
         uses: depot/build-push-action@v1
         if: env.is_release_version == 'false'
         with:
-          project: 6zxrst4dlr
+          project: gdvkdspznr
           platforms: linux/amd64,linux/arm64
           push: true
           context: .
