@@ -6,9 +6,7 @@ on:
       - 'v*' # Only run on tags that start with 'v'
 
 permissions:
-  # allow issuing OIDC tokens for this workflow run
   id-token: write
-  # allow at least reading the repo contents, add other permissions if necessary
   contents: read
 
 jobs:
@@ -20,6 +18,9 @@ jobs:
 
       - name: Set up Depot CLI
         uses: depot/setup-action@v1
+
+      - name: Login to Depot
+        run: depot auth login --token ${{ secrets.DEPOT_TOKEN }}  # Adiciona autenticação com o Depot
 
       - name: Login to DockerHub
         uses: docker/login-action@v2
@@ -83,6 +84,9 @@ jobs:
 
       - name: Set up Depot CLI
         uses: depot/setup-action@v1
+
+      - name: Login to Depot
+        run: depot auth login --token ${{ secrets.DEPOT_TOKEN }}  # Adiciona autenticação com o Depot
 
       - name: Login to DockerHub
         uses: docker/login-action@v2
